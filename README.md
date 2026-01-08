@@ -1,7 +1,7 @@
-#### Vim plugin for Valk language
+### Vim plugin for Valk language
 https://github.com/valk-lang/valk
 
-## Install
+### 安装
 Install using [Plug](https://github.com/junegunn/vim-plug)
 
 ```vim
@@ -11,8 +11,8 @@ Install using [Plug](https://github.com/junegunn/vim-plug)
 Plug 'angluca/valk.vim'
 ```
 
-## LSP setup
-Install [lsp](https://github.com/yegappan/lsp) using `Plug`
+### LSP setup
+安装 [lsp](https://github.com/yegappan/lsp) using `Plug`
 
 ```vim
 Plug 'yegappan/lsp'
@@ -29,4 +29,5 @@ au filetype valk call LspAddServer([#{
             \  }])
 ```
 
-quickly compile and run use `:make`-r
+quickly compile and run use `:make -r`
+
