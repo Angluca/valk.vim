@@ -46,7 +46,7 @@ syn match valkType       '\v<\w+>\ze(:\w)'
 syn match valkFunc       '\v[_]*\l\w*\ze((\[.*\])|((::)?\<.*\>))*\s*\('
 
 syn match valkException  '\v(\s@<=[&*~]+\ze[\(\[\{\<]*[-]?\w)|(\w@<=[*]+\ze(\W|\s))'
-syn match valkStruct     '\v((type|typedef|struct|class|object|enum|union|mode|trait)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
+syn match valkStruct     '\v((type|typedef|struct|class|object|enum|union|mode|trait|pointer)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
 
 syn match valkAdded      '\v^\s*<(test)\ze\s.*\{'
 syn match valkLabel      '\v<[@$](\w+)>'
@@ -153,9 +153,10 @@ hi def link valkPanic                 Exception
 
 syn match   valkTypedef  contains=valkTypedef "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 syn match   valkFunc     "\%(r#\)\=\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-syn keyword valkKeyword union enum type typedef namespace object class struct mode trait nextgroup=valkTypedef skipwhite skipempty
+"syn keyword valkKeyword union enum type typedef namespace object class struct mode trait nextgroup=valkTypedef skipwhite skipempty
+syn keyword valkKeyword union enum type typedef namespace object class struct mode trait pointer nextgroup=valkTypedef skipwhite
 syn keyword valkKeyword union nextgroup=valkType skipwhite skipempty contained
-"syn keyword valkMacro platform macro nextgroup=valkTypedef skipwhite skipempty
+"syn keyword valkMacro macro nextgroup=valkTypedef skipwhite skipempty
 " adapted from neovim runtime/syntax
 syn keyword valkTodo contained TODO FIXME XXX NOTE
 syn region  valkComment  start="/\*" end="\*/" contains=valkTodo,@Spell

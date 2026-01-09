@@ -30,7 +30,7 @@ if get(g:, 'valk_recommended_style', 1)
 
   let s:root = expand('<sfile>:p:h:h')
   exe 'setl tags+=' .. s:root .. '/tags/valk.tags'
-  exe 'setl dict+=' .. s:root .. '/tags/valk.dict'
+  "exe 'setl dict+=' .. s:root .. '/tags/valk.dict'
   exe 'setl dict+=' .. s:root .. '/tags/valk.base.dict'
 endif
 
