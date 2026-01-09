@@ -24,7 +24,8 @@ syn keyword valkStatement break continue return defer await as
 syn keyword valkConditional if else elif match case
 syn keyword valkLabel default
 
-syn keyword valkException throw cothrow try catch cast
+syn keyword valkKeyword throw cothrow cast
+syn keyword valkException try catch fail nope
 syn keyword valkPanic panic
 
 syn match valkTitle      '[@!?$]'
@@ -33,7 +34,6 @@ syn match valkOperator   '[\+\-\%=\/\^\&\*><\|~]'
 syn match valkOperator   '\v(\&\&|\|\||\!\=)'
 syn match valkConstant   '[{}\[\]()]'
 
-syn match valkType       '\v[?]@<=\s*<(\w+)>' " ?type
 syn match valkType       '\v\(@<=\s*\w+\ze(\[.*\])*\s*\*+\s*\)' " (type*)
 syn match valkType       '\v\[@<=\s*\w+\ze(\[.*\])*\s*\*+\s*\]' " [type*]
 syn match valkType       '\v<\w+_[tscemui]>'
@@ -45,8 +45,9 @@ syn match valkRepeat     '\v([^\.](\.|\.{3}|:|-\>))@<=\w\w*'
 syn match valkType       '\v<\w+>\ze(:\w)'
 syn match valkFunc       '\v[_]*\l\w*\ze((\[.*\])|((::)?\<.*\>))*\s*\('
 
+"syn match valkException  '\v(\W@<=[&*~]+\ze[\(\[\{\<]*[-]?\w)|(\w@<=[*]+\ze(\W|\s))'
 syn match valkException  '\v(\s@<=[&*~]+\ze[\(\[\{\<]*[-]?\w)|(\w@<=[*]+\ze(\W|\s))'
-syn match valkStruct     '\v((type|typedef|struct|class|object|enum|union|mode|trait|pointer)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
+"syn match valkStruct     '\v((type|typedef|struct|class|object|enum|union|mode|trait|pointer)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
 
 syn match valkAdded      '\v^\s*<(test)\ze\s.*\{'
 syn match valkLabel      '\v<[@$](\w+)>'
