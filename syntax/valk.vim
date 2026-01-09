@@ -2,11 +2,11 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword valkKeyword static dynamic shared public global
+syn keyword valkKeyword static dynamic macro
 syn keyword valkKeyword fn let mut const
 syn keyword valkKeyword co
-syn keyword valkKeyword link header use alias macro
-syn keyword valkKeyword value pointer mode trait extend
+syn keyword valkKeyword link header use alias global shared
+syn keyword valkKeyword pointer mode trait extend
 
 syn keyword valkType bool char byte void string cstring
 syn keyword valkType int uint isize usize
@@ -49,7 +49,8 @@ syn match valkException  '\v(\s@<=[&*~]+\ze[\(\[\{\<]*[-]?\w)|(\w@<=[*]+\ze(\W|\
 syn match valkStruct     '\v((type|typedef|struct|class|object|enum|union|mode|trait)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
 
 syn match valkAdded      '\v^\s*<(test)\ze\s.*\{'
-syn match valkLabel      '\v<\@(\w+)*>'
+syn match valkLabel      '\v<[@$](\w+)>'
+syn match valkKeyword    '\v^(\s*[+-~]\s*)?<(value)>'
 
 " -- shader
 "syn match valkKeyword    '\v<(uniform|instance|varying|var|vertex|fragment|in|out)>\s'
@@ -94,6 +95,7 @@ syn match  valkCharacter        "'[^\\]'"
 syn region    valkString      matchgroup=valkString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell
 "syn region    valkString      matchgroup=valkString start=+`+ skip=+\\\\\|\\`+ end=+`+ contains=@Spell
 
+syn match valkNumber "\v<[0-9_]+>"
 syn match valkNumber "\v<0[xX][0-9a-fA-F_]+([iuIU]?[lL]?[0-9]{-,3})?>"
 syn match valkNumber "\v<0[bB][01_]+([iuIU]?[lL]?[0-9]{-,3})?>"
 

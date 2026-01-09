@@ -9,29 +9,29 @@ set cpo&vim
 compiler valk
 
 " Formatting
-setlocal formatoptions+=croql/ formatoptions-=t
+setl formatoptions+=croql/ formatoptions-=t
 
 " Miscellaneous settings
-setlocal comments=://
-setlocal commentstring=//\ %s
-setlocal iskeyword+=@-@
-setlocal suffixesadd=.n
+setl comments=://
+setl commentstring=//\ %s
+setl iskeyword+=@-@,$
+setl suffixesadd=.valk,.valk.h
 
 let b:undo_ftplugin = 'setl cms< com< fo< isk< sua<'
 
 " Follow the valk style guide by default.
 if get(g:, 'valk_recommended_style', 1)
-  setlocal expandtab
-  setlocal shiftwidth=4
-  setlocal softtabstop=4
-  setlocal tabstop=4
-  setlocal textwidth=80
+  setl expandtab
+  setl shiftwidth=4
+  setl softtabstop=4
+  setl tabstop=4
+  setl textwidth=80
   let b:undo_ftplugin .= ' et< sts< sw< ts< tw<'
 
   let s:root = expand('<sfile>:p:h:h')
-  execute 'setl tags+=' .. s:root .. '/tags/valk.tags'
-  execute 'setl dict+=' .. s:root .. '/tags/valk.dict'
-  execute 'setl dict+=' .. s:root .. '/tags/valk.base.dict'
+  exe 'setl tags+=' .. s:root .. '/tags/valk.tags'
+  exe 'setl dict+=' .. s:root .. '/tags/valk.dict'
+  exe 'setl dict+=' .. s:root .. '/tags/valk.base.dict'
 endif
 
 fu! DeleteTrailingWS()
@@ -50,8 +50,8 @@ augroup valk.vim
   autocmd!
   " Highlight incorrect spacing by default.
   if get(g:, 'valk_space_error', 1)
-    autocmd InsertEnter * hi link valkSpaceError NONE
-    autocmd InsertLeave * hi link valkSpaceError Error
+    au InsertEnter * hi link valkSpaceError NONE
+    au InsertLeave * hi link valkSpaceError Error
   endif
 augroup END
 

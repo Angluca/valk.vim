@@ -146,7 +146,6 @@ append_uint
 args
 array
 array_values
-as
 ascii_bytes_to_lower
 assert_count
 assert_panic
@@ -186,7 +185,6 @@ ca_paths
 calloc
 can_read
 can_write
-character
 character_length
 chdir
 check_blanks
@@ -400,7 +398,6 @@ int
 int_value
 intersect
 io
-is
 is_alpha
 is_alpha_numeric
 is_array
@@ -824,7 +821,6 @@ verify
 vtable
 wait
 white
-with
 worker
 write
 write_bytes

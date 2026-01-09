@@ -161,7 +161,6 @@ array	$VALK_ROOT/lib/src/json/value.valk	/^    + fn array() Array[Value] $to {$/
 array_values	$VALK_ROOT/lib/src/json/create.valk	/^        array_values: values ?? type:Array[Value]{}$/;"	v
 array_values	$VALK_ROOT/lib/src/json/parse.valk	/^            array_values: values$/;"	v
 array_values	$VALK_ROOT/lib/src/json/value.valk	/^    + array_values: ?Array[Value]$/;"	v
-as	$VALK_ROOT/lib/src/core/clone.valk	/^    #loop object value as PROP$/;"	e
 ascii_bytes_to_lower	$VALK_ROOT/lib/src/mem/mem.valk	/^+ fn ascii_bytes_to_lower(adr: ptr, len: uint) {$/;"	f
 assert_count	$VALK_ROOT/lib/src/core/test-entry.valk	/^    assert_count: uint (0)$/;"	v
 assert_panic	$VALK_ROOT/lib/src/core/test-entry.valk	/^    static fn assert_panic(check: bool, code: String, file: String, line: uint) bool {$/;"	f
@@ -212,7 +211,6 @@ ca_paths	$VALK_ROOT/lib/src/net/ssl.valk	/^global ca_paths : ?Array[String]$/;"	
 calloc	$VALK_ROOT/lib/src/mem/mem.valk	/^+ fn calloc(size: uint) ptr {$/;"	f
 can_read	$VALK_ROOT/lib/src/fs/stream.valk	/^    - can_read: bool$/;"	v
 can_write	$VALK_ROOT/lib/src/fs/stream.valk	/^    - can_write: bool$/;"	v
-character	$VALK_ROOT/lib/src/json/parse.valk	/^        throw invalid, "Unknown value character '%{ch.to_ascii_string()}' at index: " + this.ind/;"	e
 character_length	$VALK_ROOT/lib/src/type/number.valk	/^    + fn character_length(base: SELF) uint {$/;"	f
 chdir	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn chdir(path: String) {$/;"	f
 check_blanks	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn check_blanks() {$/;"	f
@@ -566,7 +564,6 @@ io	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^        io:set_non_block(fd, true)$/
 io	$VALK_ROOT/lib/src/net/socket.valk	/^        io:close(fd)$/;"	v
 io	$VALK_ROOT/lib/src/type/number.valk	/^        io:write_bytes(1, buf, len) !? 0$/;"	v
 io	$VALK_ROOT/lib/src/type/ptr.valk	/^        io:print_from_ptr(this, length)$/;"	v
-is	$VALK_ROOT/lib/src/gc/gc-local.valk	/^            if item == null : panic("Invalid previous stack item (value is null)")$/;"	e
 is_alpha	$VALK_ROOT/lib/src/type/string.valk	/^    + fn is_alpha(allow_extra_bytes: SELF ("")) bool {$/;"	f
 is_alpha	$VALK_ROOT/lib/src/type/u8.valk	/^    + fn is_alpha() bool {$/;"	f
 is_alpha_numeric	$VALK_ROOT/lib/src/type/string.valk	/^    + fn is_alpha_numeric(allow_extra_bytes: SELF ("")) bool {$/;"	f
@@ -1116,7 +1113,6 @@ trigger_reached	$VALK_ROOT/lib/src/gc/api.valk	/^value trigger_reached (mem_new 
 trim	$VALK_ROOT/lib/src/type/string.valk	/^    + fn trim(part: SELF, limit: uint (0)) SELF {$/;"	f
 try_ca_path	$VALK_ROOT/lib/src/net/ssl.valk	/^    static fn try_ca_path(ctx: ossl:SSL_CTX, path: ?String) bool {$/;"	f
 type	$VALK_ROOT/lib/src/json/create.valk	/^        type: type_string$/;"	v
-type	$VALK_ROOT/lib/src/json/decode-gen.valk	/^    #error "Cannot convert json to this value type"$/;"	e
 type	$VALK_ROOT/lib/src/json/parse.valk	/^            type: type_object$/;"	v
 type	$VALK_ROOT/lib/src/json/value.valk	/^    + type: type:int$/;"	v
 type_array	$VALK_ROOT/lib/src/json/parse.valk	/^value type_array (5)$/;"	e
@@ -1154,8 +1150,6 @@ vtable	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    vtable: ptr$/;"	v
 wait	$VALK_ROOT/lib/src/coro/poll.valk	/^    fn wait(timeout: i32 (-1), result: Array[Coro] (null)) Array[Coro] !fd_limit !unknown {$/;"	f
 wait	$VALK_ROOT/lib/src/thread/thread.valk	/^    + fn wait() {$/;"	f
 white	$VALK_ROOT/lib/src/type/string.valk	/^        + fn white(bold: bool (false)) String {$/;"	f
-with	$VALK_ROOT/lib/src/core/mutex-struct.valk	/^		return swap this.value with null$/;"	e
-with	$VALK_ROOT/lib/src/core/mutex.valk	/^		return swap this.value with null$/;"	e
 worker	$VALK_ROOT/lib/src/http/connection.valk	/^    ~ worker: Worker$/;"	v
 worker	$VALK_ROOT/lib/src/http/worker.valk	/^fn worker(server: Server) {$/;"	f
 write	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn write(path: String, content: String, append: bool (false)) !open !write {$/;"	f
@@ -1167,4 +1161,4 @@ yellow	$VALK_ROOT/lib/src/type/string.valk	/^        + fn yellow(bold: bool (fal
 yield	$VALK_ROOT/lib/src/coro/functions.valk	/^+ fn yield() {$/;"	f
 zone	$VALK_ROOT/lib/src/type/hashmap.valk	/^    fn zone(key: K) FlatMap[K, T] {$/;"	f
 zone_index	$VALK_ROOT/lib/src/type/hashmap.valk	/^    static fn zone_index(key: K) uint {$/;"	f
-zones	$VALK_ROOT/lib/lib/src/type/hashmap.valk	/^    - zones: Array[?FlatMap[K, T]] (.{})$/;"	v
+zones	$VALK_ROOT/lib/src/type/hashmap.valk	/^    - zones: Array[?FlatMap[K, T]] (.{})$/;"	v
