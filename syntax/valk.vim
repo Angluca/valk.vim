@@ -15,7 +15,7 @@ syn keyword valkType float f32 f64
 
 syn keyword valkSelf self this ptr default
 syn keyword valkConstant true false null
-syn keyword valkSMacro assert println print
+syn keyword valkSMacro assert println print atomic
 syn match   valkNew  '\v<(new|[m]?alloc|create)>'
 syn match   valkFree '\v<(free)>'
 

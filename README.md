@@ -1,7 +1,7 @@
 ### Vim plugin for Valk language
 https://github.com/valk-lang/valk
 
-### 安装
+### Install
 Install using [Plug](https://github.com/junegunn/vim-plug)
 
 ```vim

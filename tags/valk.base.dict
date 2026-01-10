@@ -14,6 +14,7 @@ alloc
 amd64
 arm64
 assert
+atomic
 await
 bool
 break

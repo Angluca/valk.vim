@@ -1,6 +1,12 @@
 AddrInfo	$VALK_ROOT/lib/src/net/addrinfo.valk	/^+ class AddrInfo {$/;"	t
 Array	$VALK_ROOT/lib/src/type/array.valk	/^+ class Array[T: PROP_TYPE] {$/;"	t
+BCRYPT_HASH_STRING_LEN	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^value BCRYPT_HASH_STRING_LEN (60)$/;"	e
+BCRYPT_MAX_COST	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^value BCRYPT_MAX_COST (31)$/;"	e
+BCRYPT_MIN_COST	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^value BCRYPT_MIN_COST (3)$/;"	e
+BLOWFISH_BLOCK_SIZE	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^value BLOWFISH_BLOCK_SIZE (8)$/;"	e
+Blake2b	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^+ class Blake2b {$/;"	t
 Block	$VALK_ROOT/lib/src/gc/blocks.valk	/^struct Block {$/;"	t
+BlowfishContext	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ class BlowfishContext {$/;"	t
 Bump	$VALK_ROOT/lib/src/gc/bump.valk	/^struct Bump {$/;"	t
 ByteBuffer	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^+ class ByteBuffer {$/;"	t
 ByteBufferStrRef	$VALK_ROOT/lib/src/utils/ByteBufferStrRef.valk	/^class ByteBufferStrRef {$/;"	t
@@ -29,6 +35,7 @@ GcData	$VALK_ROOT/lib/src/gc/gc-data.valk	/^struct GcData {$/;"	t
 GcItem	$VALK_ROOT/lib/src/gc/gc-data.valk	/^pointer GcItem {$/;"	t
 GcPtr	$VALK_ROOT/lib/src/gc/gc-ptr.valk	/^class GcPtr {$/;"	t
 HashMap	$VALK_ROOT/lib/src/type/hashmap.valk	/^+ class HashMap[K, T] {$/;"	t
+IV	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^+ global IV : [u64 x 8] ({$/;"	t
 InMemoryFile	$VALK_ROOT/lib/src/fs/in-memory.valk	/^+ class InMemoryFile {$/;"	t
 Lifo	$VALK_ROOT/lib/src/gc/lifo.valk	/^struct Lifo {$/;"	t
 Mutex	$VALK_ROOT/lib/src/core/mutex.valk	/^+ class Mutex[T] imut {$/;"	t
@@ -42,9 +49,11 @@ PATH_MAX	$VALK_ROOT/lib/src/fs/path.valk	/^+ value PATH_MAX (4096)$/;"	e
 POOL_DATA_OFFSET	$VALK_ROOT/lib/src/gc/pool.valk	/^value POOL_DATA_OFFSET ((size_of(ptr) * 5.to(uint)))$/;"	e
 PROP	$VALK_ROOT/lib/src/core/clone.valk	/^        PROP: clone_value[PROP](PROP.value)$/;"	v
 Parser	$VALK_ROOT/lib/src/json/parse.valk	/^class Parser {$/;"	t
+Parser	$VALK_ROOT/lib/src/template/parser.valk	/^class Parser {$/;"	t
 Pool	$VALK_ROOT/lib/src/gc/pool.valk	/^struct Pool {$/;"	t
 Pool	$VALK_ROOT/lib/src/type/pool.valk	/^+ class Pool[T] {$/;"	t
 PtrRing	$VALK_ROOT/lib/src/gc/ptr-ring.valk	/^class PtrRing {$/;"	t
+RenderOptions	$VALK_ROOT/lib/src/template/options.valk	/^+ class RenderOptions {$/;"	t
 Request	$VALK_ROOT/lib/src/http/server-request.valk	/^+ class Request {$/;"	t
 Response	$VALK_ROOT/lib/src/http/server-response.valk	/^+ class Response {$/;"	t
 ResponseWriter	$VALK_ROOT/lib/src/http/response-writer.valk	/^+ class ResponseWriter {$/;"	t
@@ -52,6 +61,7 @@ Route	$VALK_ROOT/lib/src/http/route.valk	/^+ class Route[T] {$/;"	t
 RouteArg	$VALK_ROOT/lib/src/http/router.valk	/^class RouteArg {$/;"	t
 RouteBlock	$VALK_ROOT/lib/src/http/router.valk	/^class RouteBlock[T] {$/;"	t
 Router	$VALK_ROOT/lib/src/http/router.valk	/^+ class Router[T] {$/;"	t
+SIGMA	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^+ global SIGMA : [[u8 x 16] x 12] ({$/;"	t
 SSL	$VALK_ROOT/lib/headers/openssl.valk.h	/^pointer SSL {}$/;"	t
 SSL	$VALK_ROOT/lib/src/net/ssl.valk	/^class SSL {$/;"	t
 SSL3_VERSION	$VALK_ROOT/lib/headers/openssl.valk.h	/^value SSL3_VERSION (0x0300)$/;"	e
@@ -91,6 +101,8 @@ SSL_write	$VALK_ROOT/lib/headers/openssl.valk.h	/^fn SSL_write(ssl: SSL, data: p
 SSL_write_ex	$VALK_ROOT/lib/headers/openssl.valk.h	/^fn SSL_write_ex(ssl: SSL, data: ptr, bytes: uint, bytes_written_uint_ptr: ptr) i32;$/;"	f
 SSLv23_client_method	$VALK_ROOT/lib/headers/openssl.valk.h	/^fn SSLv23_client_method() ptr;$/;"	f
 STACK_ITEMS_MAX	$VALK_ROOT/lib/src/gc/stack.valk	/^value STACK_ITEMS_MAX (40_000)$/;"	e
+SanitizeOptions	$VALK_ROOT/lib/src/html/sanitize.valk	/^+ class SanitizeOptions {$/;"	t
+Scope	$VALK_ROOT/lib/src/template/scope.valk	/^- class Scope {$/;"	t
 Server	$VALK_ROOT/lib/src/http/server.valk	/^+ class Server {$/;"	t
 Socket	$VALK_ROOT/lib/src/net/socket.valk	/^class Socket {$/;"	t
 SocketTCP	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^class SocketTCP {$/;"	t
@@ -122,22 +134,14 @@ _values	$VALK_ROOT/lib/src/type/flatmap.valk	/^    - _values : Array[T] (.{})$/;
 accept	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    + fn accept() Connection !too_many_connections !error !closed {$/;"	f
 active_body_size	$VALK_ROOT/lib/src/http/server.valk	/^    -[ns+] active_body_size: uint (0)$/;"	v
 add	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn add(dir: String, fn: String) String {$/;"	f
+add	$VALK_ROOT/lib/src/gc/gc-ptr.valk	/^    + fn add(v: uint) ptr $add {$/;"	f
 add	$VALK_ROOT/lib/src/gc/lifo.valk	/^    fn add(item: ptr) {$/;"	f
 add	$VALK_ROOT/lib/src/gc/ptr-ring.valk	/^    fn add(item: ptr) {$/;"	f
 add	$VALK_ROOT/lib/src/http/router.valk	/^	+ fn add(method: String, url: String, handler: T) !invalid_route {$/;"	f
-add	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add(value: Value) {$/;"	f
 add	$VALK_ROOT/lib/src/type/pool.valk	/^    fn add(item: T) {$/;"	f
 add	$VALK_ROOT/lib/src/type/string.valk	/^    fn add(add: SELF) SELF $add {$/;"	f
-add_array	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_array(value: Array[Value]) SELF {$/;"	f
-add_bool	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_bool(value: type:bool) SELF {$/;"	f
-add_null	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_null() SELF {$/;"	f
-add_number_float	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_number_float(value: type:float) SELF {$/;"	f
-add_number_int	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_number_int(value: type:int) SELF {$/;"	f
-add_number_uint	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_number_uint(value: type:uint) SELF {$/;"	f
-add_object	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_object(value: Map[Value]) SELF {$/;"	f
 add_ptr	$VALK_ROOT/lib/src/gc/bump.valk	/^    fn add_ptr(item: ptr) {$/;"	f
 add_static_dir	$VALK_ROOT/lib/src/http/server.valk	/^    + fn add_static_dir(path: String) !notfound {$/;"	f
-add_string	$VALK_ROOT/lib/src/json/value.valk	/^    + fn add_string(value: String) SELF {$/;"	f
 add_unused_block	$VALK_ROOT/lib/src/gc/blocks.valk	/^fn add_unused_block(block: Block) {$/;"	f
 addr_len	$VALK_ROOT/lib/src/net/addrinfo.valk	/^    + fn addr_len() u32 {$/;"	f
 addrinfo	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    - addrinfo: AddrInfo$/;"	v
@@ -145,6 +149,7 @@ alloc	$VALK_ROOT/lib/src/gc/api.valk	/^+ fn alloc(size: uint) GcPtr {$/;"	f
 alloc	$VALK_ROOT/lib/src/mem/mem.valk	/^+ fn alloc(size: uint) ptr {$/;"	f
 allow_new_response	$VALK_ROOT/lib/src/http/response-writer.valk	/^    - fn allow_new_response() {$/;"	f
 ansi_supported	$VALK_ROOT/lib/src/ansi/ansi.valk	/^global ansi_supported : u8 (0)$/;"	t
+append	$VALK_ROOT/lib/src/json/value.valk	/^    + fn append(value: Value) {$/;"	f
 append	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn append(item: T, unique: bool (false)) SELF {$/;"	f
 append	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn append(buffer: ByteBuffer, start_index: uint (0)) {$/;"	f
 append_byte	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn append_byte(byte: u8) {$/;"	f
@@ -175,6 +180,9 @@ await_fd	$VALK_ROOT/lib/src/coro/functions.valk	/^+ fn await_fd(fd: FD, read: bo
 await_last	$VALK_ROOT/lib/src/coro/coro.valk	/^    fn await_last() {$/;"	f
 backup_gc_stack	$VALK_ROOT/lib/src/gc/stack.valk	/^fn backup_gc_stack() {$/;"	f
 basename	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn basename(path: String) String {$/;"	f
+bcrypt	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^+ fn bcrypt(cost: uint, salt: String, password: String, output: utils:ByteBuffer) {$/;"	f
+bcrypt_hash	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^+ fn bcrypt_hash(password: String, cost: uint (12)) String {$/;"	f
+bcrypt_verify	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^+ fn bcrypt_verify(password: String, hash: String) bool {$/;"	f
 bind	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    + fn bind() !closed !bind !listen {$/;"	f
 black	$VALK_ROOT/lib/src/type/string.valk	/^        + fn black(bold: bool (false)) String {$/;"	f
 blanks	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    blanks: Bump (Bump.new())$/;"	v
@@ -184,6 +192,10 @@ block	$VALK_ROOT/lib/src/http/router.valk	/^	- block: RouteBlock[T]$/;"	v
 block_offset	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    block_offset: u16$/;"	v
 blockc	$VALK_ROOT/lib/src/gc/pool.valk	/^    blockc: uint$/;"	v
 blocks	$VALK_ROOT/lib/src/http/router.valk	/^	blocks: Map[RouteBlock[T]]$/;"	v
+blowfish_encrypt_block	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ fn blowfish_encrypt_block(context: BlowfishContext, input: ptr[u8], output: ptr[u8]) {$/;"	f
+blowfish_expand_key	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ fn blowfish_expand_key(context: BlowfishContext, salt: ?utils:ByteBuffer, key: utils:ByteBuffe/;"	f
+blowfish_init_state	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ fn blowfish_init_state(context: BlowfishContext) {$/;"	f
+blowfish_xor_block	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ fn blowfish_xor_block(data: &[u8], salt: utils:ByteBuffer, saltIndex: &[uint]) {$/;"	f
 blue	$VALK_ROOT/lib/src/type/string.valk	/^        + fn blue(bold: bool (false)) String {$/;"	f
 body	$VALK_ROOT/lib/src/http/client-options.valk	/^    + body: String ("")$/;"	v
 body	$VALK_ROOT/lib/src/http/client-request.valk	/^            body: context.body$/;"	v
@@ -196,6 +208,8 @@ body_received	$VALK_ROOT/lib/src/http/context.valk	/^    ~ body_received: uint (
 bool	$VALK_ROOT/lib/src/json/value.valk	/^    + fn bool() type:bool $to {$/;"	f
 bool_value	$VALK_ROOT/lib/src/json/create.valk	/^        bool_value: value$/;"	v
 bool_value	$VALK_ROOT/lib/src/json/value.valk	/^    + bool_value: type:bool (false)$/;"	v
+buf	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    buf: [u8 x 128] ({0 ...})$/;"	v
+buf_len	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    buf_len: uint (0)$/;"	v
 buffer	$VALK_ROOT/lib/src/utils/ByteBufferStrRef.valk	/^    buffer: ByteBuffer$/;"	v
 bytes	$VALK_ROOT/lib/src/type/string-char-step.valk	/^    bytes: uint$/;"	v
 bytes	$VALK_ROOT/lib/src/type/string.valk	/^    ~ bytes: uint$/;"	v
@@ -246,6 +260,7 @@ closed	$VALK_ROOT/lib/src/net/connection.valk	/^    - closed: bool (false)$/;"	v
 closed	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    - closed: bool (false)$/;"	v
 co_count	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    co_count: u32$/;"	v
 co_own	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn co_own() {$/;"	f
+col	$VALK_ROOT/lib/src/template/parser.valk	/^    col: uint (1)$/;"	v
 collect	$VALK_ROOT/lib/src/gc/api.valk	/^+ fn collect() {$/;"	f
 collect	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn collect() {$/;"	f
 collect_count	$VALK_ROOT/lib/src/gc/gc-local.valk	/^global collect_count: uint$/;"	t
@@ -255,6 +270,7 @@ collect_shared_if_threshold_reached	$VALK_ROOT/lib/src/gc/api.valk	/^+ fn collec
 collect_stack_item	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn collect_stack_item(item: ptr) {$/;"	f
 collect_stack_items	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn collect_stack_items() {$/;"	f
 complete	$VALK_ROOT/lib/src/coro/coro.valk	/^    fn complete() {$/;"	f
+compress	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    fn compress(last: bool (false)) {$/;"	f
 con	$VALK_ROOT/lib/src/http/client-request.valk	/^    - con: net:Connection$/;"	v
 connect	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    + fn connect() Connection !closed !connection_failed {$/;"	f
 connections	$VALK_ROOT/lib/src/http/server.valk	/^    connections: uint (0)$/;"	v
@@ -262,6 +278,8 @@ connections	$VALK_ROOT/lib/src/http/worker.valk	/^    connections: uint (0)$/;"	
 contains	$VALK_ROOT/lib/src/type/array.valk	/^    + fn contains(value: T) bool {$/;"	f
 contains	$VALK_ROOT/lib/src/type/string.valk	/^    + fn contains(part: String) bool {$/;"	f
 contains_byte	$VALK_ROOT/lib/src/type/string.valk	/^    + fn contains_byte(byte: u8) bool {$/;"	f
+content	$VALK_ROOT/lib/src/template/parser.valk	/^    content: String$/;"	v
+content	$VALK_ROOT/lib/src/template/render.valk	/^        content: content$/;"	v
 content_length	$VALK_ROOT/lib/src/http/context.valk	/^    ~ content_length: uint (0)$/;"	v
 content_type	$VALK_ROOT/lib/src/http/server-response.valk	/^    + content_type: String ("text\/plain")$/;"	v
 continue	$VALK_ROOT/lib/src/coro/coro.valk	/^    fn continue() {$/;"	f
@@ -278,7 +296,7 @@ core	$VALK_ROOT/lib/templates/main.valk	/^    core:cli_args = args$/;"	v
 coro	$VALK_ROOT/lib/src/io/fd.valk	/^                coro:await_fd(fd, true, false)$/;"	v
 coro	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^                    coro:await_fd(this.fd, true, false)$/;"	v
 coro	$VALK_ROOT/lib/src/thread/thread.valk	/^        coro:Coro.loop(run_until)$/;"	v
-coro	$VALK_ROOT/lib/src/time/sleep.valk	/^        coro:g_coro_sleepers.push(current)$/;"	v
+coro	$VALK_ROOT/lib/src/time/sleep.valk	/^        coro:g_coro_sleepers.append(current)$/;"	v
 coro	$VALK_ROOT/lib/templates/main.valk	/^    coro:Coro.loop(main_coro)$/;"	v
 coro_poll	$VALK_ROOT/lib/src/coro/coro.valk	/^global coro_poll : ?CoroPoll$/;"	t
 coro_run_first	$VALK_ROOT/lib/src/coro/coro.valk	/^global coro_run_first : ?Coro$/;"	t
@@ -309,11 +327,14 @@ data	$VALK_ROOT/lib/src/gc/ptr-ring.valk	/^    data: ptr$/;"	v
 data	$VALK_ROOT/lib/src/http/context-parser.valk	/^    + fn data() Map[String] {$/;"	f
 data	$VALK_ROOT/lib/src/json/parse.valk	/^    data: utils:ByteBuffer$/;"	v
 data	$VALK_ROOT/lib/src/net/addrinfo.valk	/^    ~ data: sys:libc_addrinfo_fix$/;"	v
+data	$VALK_ROOT/lib/src/template/parser.valk	/^    data: json:Value$/;"	v
+data	$VALK_ROOT/lib/src/template/render.valk	/^        data: d$/;"	v
+data	$VALK_ROOT/lib/src/template/scope.valk	/^    data: ?Map[json:Value] (null)$/;"	v
 data	$VALK_ROOT/lib/src/type/array.valk	/^    ~ data: gc:GcPtr$/;"	v
 data	$VALK_ROOT/lib/src/type/pool.valk	/^    - data: ptr$/;"	v
 data	$VALK_ROOT/lib/src/type/string-char-step.valk	/^    data: ptr$/;"	v
 data	$VALK_ROOT/lib/src/type/struct-array.valk	/^    ~ data: ptr$/;"	v
-data	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    ~ data: ptr$/;"	v
+data	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    ~ data: gc:GcPtr$/;"	v
 data_map	$VALK_ROOT/lib/src/http/context-parser.valk	/^    -[ns+] data_map: ?Map[String]$/;"	v
 data_multipart	$VALK_ROOT/lib/src/http/context-parser.valk	/^    - fn data_multipart(result: Map[String], files: Map[fs:InMemoryFile], boundary: String) {$/;"	f
 data_urlencoded	$VALK_ROOT/lib/src/http/context-parser.valk	/^    - fn data_urlencoded(result: Map[String]) {$/;"	f
@@ -343,9 +364,10 @@ each_get	$VALK_ROOT/lib/src/type/flatmap.valk	/^    fn each_get(index: uint) (T,
 each_get	$VALK_ROOT/lib/src/type/hashmap.valk	/^    fn each_get(index: uint) (T, K) !end {$/;"	f
 each_get	$VALK_ROOT/lib/src/type/string.valk	/^    fn each_get(index: uint) u8 !end {$/;"	f
 each_get	$VALK_ROOT/lib/src/type/struct-array.valk	/^    fn each_get(index: uint) T !end {$/;"	f
+eks_blowfish_setup	$VALK_ROOT/lib/src/crypto/bcrypt.valk	/^fn eks_blowfish_setup(context: BlowfishContext, cost: uint, salt: utils:ByteBuffer, password: ut/;"	f
 else	$VALK_ROOT/lib/src/gc/gc-local.valk	/^        else : reset_pools(this.pools, this.poolc_ptr[0])$/;"	v
 else	$VALK_ROOT/lib/src/gc/gc-shared.valk	/^    else : mark = 1$/;"	v
-else	$VALK_ROOT/lib/src/template/render.valk	/^        else: buf.append_byte(ch)$/;"	v
+else	$VALK_ROOT/lib/src/template/parser.valk	/^                    else : this.expect("}}", true, true) ! return EMSG$/;"	v
 else	$VALK_ROOT/lib/src/type/array.valk	/^            else : @ptrv(data, T, insert_i++) = find$/;"	v
 else	$VALK_ROOT/lib/src/type/string.valk	/^            else : buf.append_byte(ch)$/;"	v
 empty	$VALK_ROOT/lib/src/http/server-response.valk	/^    + static fn empty(code: u32, headers: ?Map[String] (null)) Response {$/;"	f
@@ -367,7 +389,7 @@ equals_str	$VALK_ROOT/lib/src/type/number.valk	/^    + fn equals_str(str: String
 equals_str	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn equals_str(str: String) bool $eq {$/;"	f
 error	$VALK_ROOT/lib/src/core/wsa.valk	/^    static fn error() i32 {$/;"	f
 error	$VALK_ROOT/lib/src/coro/coro.valk	/^    error: u32 (0)$/;"	v
-error	$VALK_ROOT/lib/src/template/render.valk	/^fn error(path: ?String, content: String, line: uint, error: String) String {$/;"	f
+error	$VALK_ROOT/lib/src/template/parser.valk	/^    fn error(msg: String) String {$/;"	f
 error_code	$VALK_ROOT/lib/src/core/core.valk	/^~ global error_code : u32$/;"	t
 error_code	$VALK_ROOT/lib/src/coro/coro.valk	/^    error_code: u32 (0)$/;"	v
 error_msg	$VALK_ROOT/lib/src/core/core.valk	/^~ global error_msg : String ("")$/;"	t
@@ -376,13 +398,18 @@ error_trace	$VALK_ROOT/lib/src/core/core.valk	/^- global error_trace : [String x
 error_trace_index	$VALK_ROOT/lib/src/core/core.valk	/^- global error_trace_index : uint$/;"	t
 esc	$VALK_ROOT/lib/src/type/string.valk	/^        fn esc() String {$/;"	f
 escape	$VALK_ROOT/lib/src/type/string.valk	/^    + fn escape() String {$/;"	f
+escape_ampersand	$VALK_ROOT/lib/src/html/sanitize.valk	/^    + escape_ampersand: bool (false)$/;"	v
+escape_double_quote	$VALK_ROOT/lib/src/html/sanitize.valk	/^    + escape_double_quote: bool (true)$/;"	v
+escape_gt	$VALK_ROOT/lib/src/html/sanitize.valk	/^    + escape_gt: bool (true)$/;"	v
+escape_lt	$VALK_ROOT/lib/src/html/sanitize.valk	/^    + escape_lt: bool (true)$/;"	v
+escape_single_quote	$VALK_ROOT/lib/src/html/sanitize.valk	/^    + escape_single_quote: bool (true)$/;"	v
 exe_dir	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn exe_dir() String {$/;"	f
 exe_path	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn exe_path() String {$/;"	f
 exec	$VALK_ROOT/lib/src/core/exec.valk	/^+ fn exec(cmd: String, stream_output: bool (false)) (i32, String) {$/;"	f
 exists	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn exists(path: String) bool {$/;"	f
 exit	$VALK_ROOT/lib/src/core/core.valk	/^+ fn exit(code: i32) $exit {$/;"	f
 expect	$VALK_ROOT/lib/src/json/parse.valk	/^    - fn expect(ch: u8) !invalid {$/;"	f
-expect	$VALK_ROOT/lib/src/template/render.valk	/^fn expect(content: String, index: uint, allow_space: bool, expect: String) uint {$/;"	f
+expect	$VALK_ROOT/lib/src/template/parser.valk	/^    fn expect(tok: String, allow_space: bool, update: bool (true)) !notfound {$/;"	f
 ext	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn ext(path: String, with_dot: bool (false)) String {$/;"	f
 failures	$VALK_ROOT/lib/src/core/test-entry.valk	/^    failures: Array[String] (.new())$/;"	v
 fast_handler	$VALK_ROOT/lib/src/http/server.valk	/^    + fast_handler: ?fn(Context, ResponseWriter)()$/;"	v
@@ -405,7 +432,9 @@ filter	$VALK_ROOT/lib/src/type/array.valk	/^    + fn filter(func: ?fn(T)(bool) (
 filter_copy	$VALK_ROOT/lib/src/type/array.valk	/^    + fn filter_copy(func: ?fn(T)(bool) (null)) SELF {$/;"	f
 filter_null	$VALK_ROOT/lib/src/type/array.valk	/^    - static fn filter_null(i: T) bool {$/;"	f
 finalize	$VALK_ROOT/lib/src/core/test-results.valk	/^    fn finalize() {$/;"	f
+finalize	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    + fn finalize(out: ptr[u8]) {$/;"	f
 find	$VALK_ROOT/lib/src/http/router.valk	/^	+ fn find(method: String, url: String) Route[T] !not_found {$/;"	f
+find	$VALK_ROOT/lib/src/json/value.valk	/^    + fn find(key: String) Value !missing {$/;"	f
 find_char	$VALK_ROOT/lib/src/mem/mem.valk	/^+ fn find_char(adr: ptr, ch: u8, length: uint) uint !not_found {$/;"	f
 find_char_	$VALK_ROOT/lib/src/mem/mem.valk	/^fn find_char_(adr: ptr, ch: u8, length: uint) uint !not_found {$/;"	f
 find_route	$VALK_ROOT/lib/src/http/router.valk	/^	- static fn find_route(block: RouteBlock[T], index: u8, arg_c: u8, parts: Array[String]) ?Route/;"	f
@@ -447,7 +476,7 @@ g_coro_sleepers_next	$VALK_ROOT/lib/src/coro/coro.valk	/^global g_coro_sleepers_
 g_coros	$VALK_ROOT/lib/src/coro/coro.valk	/^global g_coros : Array[?Coro] (.new(16))$/;"	t
 g_list_index	$VALK_ROOT/lib/src/coro/coro.valk	/^    g_list_index: uint (0)$/;"	v
 g_mimes	$VALK_ROOT/lib/src/fs/mime.valk	/^global g_mimes : ?Map[String] (null)$/;"	t
-gc	$VALK_ROOT/lib/src/coro/coro.valk	/^        gc:stack_top = gc:stack_root + gc_size$/;"	v
+gc	$VALK_ROOT/lib/src/coro/coro.valk	/^        gc:stack_top = (&gc:stack_root).@cast(ptr) + gc_size$/;"	v
 gc	$VALK_ROOT/lib/src/coro/poll.valk	/^        gc:unlock()$/;"	v
 gc	$VALK_ROOT/lib/src/gc/gc-local.valk	/^global gc : Gc (@undefined)$/;"	t
 gc	$VALK_ROOT/lib/src/thread/thread.valk	/^        gc:thread_stop()$/;"	v
@@ -465,7 +494,6 @@ gc_free	$VALK_ROOT/lib/src/net/ssl.valk	/^    fn gc_free() {$/;"	f
 gc_free	$VALK_ROOT/lib/src/thread/thread.valk	/^    fn gc_free() {$/;"	f
 gc_free	$VALK_ROOT/lib/src/type/pool.valk	/^    fn gc_free() {$/;"	f
 gc_free	$VALK_ROOT/lib/src/type/struct-array.valk	/^    fn gc_free() {$/;"	f
-gc_free	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    fn gc_free() {$/;"	f
 gc_list	$VALK_ROOT/lib/src/gc/gc-shared.valk	/^@shared gc_list: Array[Gc] (@undefined)$/;"	t
 get	$VALK_ROOT/lib/src/gc/bump.valk	/^    fn get(isize: uint) ptr {$/;"	f
 get	$VALK_ROOT/lib/src/gc/pool.valk	/^    fn get() ptr $hot {$/;"	f
@@ -478,9 +506,10 @@ get	$VALK_ROOT/lib/src/type/pool.valk	/^    fn get() T !empty {$/;"	f
 get	$VALK_ROOT/lib/src/type/string.valk	/^    + fn get(index: uint) u8 $offset {$/;"	f
 get	$VALK_ROOT/lib/src/type/struct-array.valk	/^    fn get(index: uint) T {$/;"	f
 get	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn get(index: uint) u8 $offset {$/;"	f
+get_data	$VALK_ROOT/lib/src/template/scope.valk	/^    fn get_data() Map[json:Value] {$/;"	f
 get_error_trace	$VALK_ROOT/lib/src/core/core.valk	/^+fn get_error_trace() Array[String] {$/;"	f
 get_headers	$VALK_ROOT/lib/src/http/client-options.valk	/^    + fn get_headers() Map[String] {$/;"	f
-get_index	$VALK_ROOT/lib/src/json/value.valk	/^    + fn get_index(index: uint) Value {$/;"	f
+get_index	$VALK_ROOT/lib/src/json/value.valk	/^    + fn get_index(index: uint) Value !range {$/;"	f
 get_poll	$VALK_ROOT/lib/src/coro/coro.valk	/^    static fn get_poll() CoroPoll {$/;"	f
 get_pool	$VALK_ROOT/lib/src/gc/pool.valk	/^fn get_pool(i: uint, size: uint) Pool {$/;"	f
 get_pool_for_size	$VALK_ROOT/lib/src/gc/pool.valk	/^fn get_pool_for_size(size: uint) Pool {$/;"	f
@@ -509,6 +538,8 @@ has_leak_mark	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn has_leak_mark() bool {
 has_value	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + fn has_value(value: T) bool {$/;"	f
 has_value	$VALK_ROOT/lib/src/type/hashmap.valk	/^    + fn has_value(value: T) bool {$/;"	f
 has_vtable	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn has_vtable() bool { return (this.flags & flag_has_vtable) != 0 }$/;"	f
+hash_size	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    hash_size: uint$/;"	v
+hash_str	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    + static fn hash_str(input: String, key: ?String (null), lowercase: bool (true)) String !inv/;"	f
 head	$VALK_ROOT/lib/src/gc/ptr-ring.valk	/^    head: uint (0)$/;"	v
 header_data	$VALK_ROOT/lib/src/http/connection.valk	/^                        header_data: context.header_data$/;"	v
 header_data	$VALK_ROOT/lib/src/http/context.valk	/^    - header_data: utils:ByteBufferStrRef$/;"	v
@@ -528,6 +559,9 @@ host	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    ~ host: String$/;"	v
 host	$VALK_ROOT/lib/src/net/ssl.valk	/^    - host: String$/;"	v
 host	$VALK_ROOT/lib/src/url/parse.valk	/^    + host: String$/;"	v
 html	$VALK_ROOT/lib/src/http/server-response.valk	/^    + static fn html(body: String, code: u32 (200), headers: ?Map[String] (null)) Response {$/;"	f
+if_is_handled	$VALK_ROOT/lib/src/template/scope.valk	/^    if_is_handled: bool (false)$/;"	v
+ignore	$VALK_ROOT/lib/src/template/scope.valk	/^    ignore: bool (false)$/;"	v
+iname	$VALK_ROOT/lib/src/template/scope.valk	/^    iname: ?String (null)$/;"	v
 increase_block	$VALK_ROOT/lib/src/gc/marking.valk	/^fn increase_block(block: ptr) $inline {$/;"	f
 increase_block_of_item	$VALK_ROOT/lib/src/gc/marking.valk	/^fn increase_block_of_item(item: ptr) {$/;"	f
 increase_size	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn increase_size(new_size: uint) gc:GcPtr {$/;"	f
@@ -538,6 +572,7 @@ index	$VALK_ROOT/lib/src/coro/poll.valk	/^    index: uint (0)$/;"	v
 index	$VALK_ROOT/lib/src/gc/bump.valk	/^    index: uint (0)$/;"	v
 index	$VALK_ROOT/lib/src/gc/lifo.valk	/^    index: uint (0)$/;"	v
 index	$VALK_ROOT/lib/src/json/parse.valk	/^    index: type:uint$/;"	v
+index	$VALK_ROOT/lib/src/template/scope.valk	/^    index: int (0)$/;"	v
 index_of	$VALK_ROOT/lib/src/type/array.valk	/^    + fn index_of(item: T) uint !not_found {$/;"	f
 index_of	$VALK_ROOT/lib/src/type/c-string.valk	/^    fn index_of(find: u8) uint !notfound {$/;"	f
 index_of	$VALK_ROOT/lib/src/type/string.valk	/^    + fn index_of(part: String, start_index: uint (0)) uint !not_found {$/;"	f
@@ -601,7 +636,6 @@ is_owned_not_shared	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn is_owned_not_sha
 is_readable	$VALK_ROOT/lib/src/coro/poll-event.valk	/^    fn is_readable() bool {$/;"	f
 is_shared	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn is_shared() bool { return (this.flags & flag_shared) != 0 }$/;"	f
 is_space_or_tab	$VALK_ROOT/lib/src/type/u8.valk	/^    + fn is_space_or_tab() bool {$/;"	f
-is_still_co_owned	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn is_still_co_owned() bool { return (this.flags & flag_still_co_owned) != 0 }$/;"	f
 is_string	$VALK_ROOT/lib/src/json/value.valk	/^    + fn is_string() type:bool {$/;"	f
 is_upper	$VALK_ROOT/lib/src/type/u8.valk	/^    + fn is_upper() bool {$/;"	f
 is_whitespace	$VALK_ROOT/lib/src/type/u8.valk	/^    + fn is_whitespace() bool {$/;"	f
@@ -616,14 +650,19 @@ join	$VALK_ROOT/lib/src/type/array.valk	/^    + fn join(divider: String) String 
 json	$VALK_ROOT/lib/src/http/server-response.valk	/^    + static fn json(body: String, code: u32 (200), headers: ?Map[String] (null)) Response {$/;"	f
 keys	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + fn keys() Array[K] {$/;"	f
 keys	$VALK_ROOT/lib/src/type/hashmap.valk	/^    + fn keys() Array[K] {$/;"	f
+kname	$VALK_ROOT/lib/src/template/scope.valk	/^    kname: ?String (null)$/;"	v
 last	$VALK_ROOT/lib/src/gc/pool.valk	/^    last: ptr (null.@cast(.))$/;"	v
 leak_check	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn leak_check() {$/;"	f
+length	$VALK_ROOT/lib/src/json/value.valk	/^    + fn length() uint {$/;"	f
 length	$VALK_ROOT/lib/src/type/array.valk	/^    ~ length: uint (0)$/;"	v
 length	$VALK_ROOT/lib/src/type/c-string.valk	/^    fn length() uint {$/;"	f
 length	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    ~ length: uint (0)$/;"	v
 length	$VALK_ROOT/lib/src/utils/ByteBufferStrRef.valk	/^    length: uint$/;"	v
 libc_errno	$VALK_ROOT/lib/src/core/errno.valk	/^+ fn libc_errno() i32 {$/;"	f
 line	$VALK_ROOT/lib/src/core/test-entry.valk	/^    line: uint$/;"	v
+line	$VALK_ROOT/lib/src/template/parser.valk	/^    line: uint (1)$/;"	v
+list	$VALK_ROOT/lib/src/template/scope.valk	/^    list: Array[json:Value] (.{})$/;"	v
+list_keys	$VALK_ROOT/lib/src/template/scope.valk	/^    list_keys: ?Array[String] (null)$/;"	v
 lock	$VALK_ROOT/lib/src/core/mutex-struct.valk	/^	fn lock() void {$/;"	f
 lock	$VALK_ROOT/lib/src/core/mutex.valk	/^	+ fn lock() void {$/;"	f
 lock	$VALK_ROOT/lib/src/gc/api.valk	/^+ fn lock() { gc.mutex.lock() }$/;"	f
@@ -666,6 +705,7 @@ mem	$VALK_ROOT/lib/src/core/mutex-struct.valk	/^        mem:free(this)$/;"	v
 mem	$VALK_ROOT/lib/src/core/mutex.valk	/^		mem:free(this.mutex)$/;"	v
 mem	$VALK_ROOT/lib/src/core/wsa.valk	/^        mem:free(data)$/;"	v
 mem	$VALK_ROOT/lib/src/coro/coro.valk	/^        mem:free(this.args)$/;"	v
+mem	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^           mem:copy(key.data, b.buf, keylen);$/;"	v
 mem	$VALK_ROOT/lib/src/fs/in-memory.valk	/^            mem:copy(data, d, size)$/;"	v
 mem	$VALK_ROOT/lib/src/gc/blocks.valk	/^                mem:free(block)$/;"	v
 mem	$VALK_ROOT/lib/src/gc/bump.valk	/^        mem:free(this.data)$/;"	v
@@ -683,7 +723,7 @@ mem	$VALK_ROOT/lib/src/type/pool.valk	/^        mem:free(this.data)$/;"	v
 mem	$VALK_ROOT/lib/src/type/ptr.valk	/^        mem:copy(this, str.data, length)$/;"	v
 mem	$VALK_ROOT/lib/src/type/string.valk	/^        mem:copy(this.data, data, this_len)$/;"	v
 mem	$VALK_ROOT/lib/src/type/struct-array.valk	/^        mem:free(this.data)$/;"	v
-mem	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^        mem:free(this.data)$/;"	v
+mem	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^        mem:copy(this.data, str.data, this.length)$/;"	v
 mem_marked	$VALK_ROOT/lib/src/gc/gc-local.valk	/^global mem_marked: uint$/;"	t
 mem_minimum_trigger	$VALK_ROOT/lib/src/gc/gc-local.valk	/^value mem_minimum_trigger (8 * 1024)$/;"	e
 mem_new	$VALK_ROOT/lib/src/gc/gc-local.valk	/^global mem_new: uint$/;"	t
@@ -720,6 +760,7 @@ new	$VALK_ROOT/lib/src/core/mutex-struct.valk	/^	static fn new(value: T) SELF { 
 new	$VALK_ROOT/lib/src/core/mutex.valk	/^	+ static fn new(value: T) SELF { $/;"	f
 new	$VALK_ROOT/lib/src/coro/coro.valk	/^    static fn new(handler: ptr, start_func: ptr) SELF {$/;"	f
 new	$VALK_ROOT/lib/src/coro/poll.valk	/^    static fn new() SELF {$/;"	f
+new	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    + static fn new(hash_size: uint, key: ?String (null)) Blake2b !invalid_hash_size !invalid_ke/;"	f
 new	$VALK_ROOT/lib/src/fs/path.valk	/^    + static fn new(path: String) Path {$/;"	f
 new	$VALK_ROOT/lib/src/gc/bump.valk	/^    static fn new(size: uint (1000)) Bump {$/;"	f
 new	$VALK_ROOT/lib/src/gc/lifo.valk	/^    static fn new() Lifo {$/;"	f
@@ -745,11 +786,13 @@ new_float	$VALK_ROOT/lib/src/json/create.valk	/^+ fn new_float(value: type:float
 new_int	$VALK_ROOT/lib/src/json/create.valk	/^+ fn new_int(value: type:int) Value {$/;"	f
 new_null	$VALK_ROOT/lib/src/json/create.valk	/^+ fn new_null() Value {$/;"	f
 new_object	$VALK_ROOT/lib/src/json/create.valk	/^+ fn new_object(values: ?Map[Value] (null)) Value {$/;"	f
+new_scope	$VALK_ROOT/lib/src/template/parser.valk	/^    fn new_scope(type: int) Scope {$/;"	f
 new_string	$VALK_ROOT/lib/src/json/create.valk	/^+ fn new_string(text: String) Value {$/;"	f
 new_tcp	$VALK_ROOT/lib/src/net/socket.valk	/^    static fn new_tcp(host: String, port: u16) SocketTCP !init_error {$/;"	f
 new_uint	$VALK_ROOT/lib/src/json/create.valk	/^+ fn new_uint(value: type:uint) Value {$/;"	f
 next	$VALK_ROOT/lib/src/gc/blocks.valk	/^    next: ?ptr$/;"	v
 next	$VALK_ROOT/lib/src/type/string-char-step.valk	/^    fn next() u8 !end {$/;"	f
+next_is	$VALK_ROOT/lib/src/template/parser.valk	/^    fn next_is(tok: String, allow_space: bool) bool {$/;"	f
 next_resume	$VALK_ROOT/lib/src/coro/coro.valk	/^    next_resume: ?Coro$/;"	v
 num2str_buf1	$VALK_ROOT/lib/src/type/number.valk	/^global num2str_buf1 : ?ptr (@undefined)$/;"	t
 num2str_buf2	$VALK_ROOT/lib/src/type/number.valk	/^global num2str_buf2 : ?ptr (@undefined)$/;"	t
@@ -759,11 +802,13 @@ object_values	$VALK_ROOT/lib/src/json/value.valk	/^    + object_values: ?Map[Val
 octal_to_int	$VALK_ROOT/lib/src/type/string.valk	/^    + fn octal_to_int() int !invalid {$/;"	f
 octal_to_uint	$VALK_ROOT/lib/src/type/string.valk	/^    + fn octal_to_uint() uint !invalid {$/;"	f
 offmask	$VALK_ROOT/lib/src/gc/gc-data.valk	/^value offmask (0xFFF8)$/;"	e
-offset	$VALK_ROOT/lib/src/type/ptr.valk	/^    + fn offset(offset: uint) ptr {$/;"	f
+offset	$VALK_ROOT/lib/src/gc/gc-ptr.valk	/^    + fn offset(v: int) ptr {$/;"	f
+offset	$VALK_ROOT/lib/src/type/ptr.valk	/^    + fn offset(offset: int) ptr {$/;"	f
 offset	$VALK_ROOT/lib/src/utils/ByteBufferStrRef.valk	/^    offset: uint$/;"	v
-offset_int	$VALK_ROOT/lib/src/type/ptr.valk	/^    + fn offset_int(offset: int) ptr {$/;"	f
 open	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn open(path: String, writable: bool, append_on_write: bool) FD !open {$/;"	f
 open_extend	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn open_extend(path: String, writable: bool, append_on_write: bool, create_file_if_doesnt_exis/;"	f
+options	$VALK_ROOT/lib/src/template/parser.valk	/^    options: ?RenderOptions (null)$/;"	v
+options	$VALK_ROOT/lib/src/template/render.valk	/^        options: options$/;"	v
 os_fd	$VALK_ROOT/lib/src/io/fd.valk	/^+ fn os_fd(fd: FD) uint { return fd.to(uint) }$/;"	f
 ossl	$VALK_ROOT/lib/src/net/ssl.valk	/^        ossl:SSL_set_fd(ssl, fd.@cast(i32))$/;"	v
 outer_func	$VALK_ROOT/lib/src/core/closure.valk	/^    outer_func: ptr$/;"	v
@@ -771,12 +816,17 @@ output	$VALK_ROOT/lib/src/http/response-writer.valk	/^    -[ns+] output: utils:B
 output_file	$VALK_ROOT/lib/src/http/client-request.valk	/^    - output_file: ?fs:FileStream$/;"	v
 output_pos	$VALK_ROOT/lib/src/http/response-writer.valk	/^    - output_pos: uint (0)$/;"	v
 output_to_file	$VALK_ROOT/lib/src/http/client-options.valk	/^    + output_to_file: ?String$/;"	v
+pad_left	$VALK_ROOT/lib/src/type/string.valk	/^    + fn pad_left(char: u8, length: uint) String {$/;"	f
+pad_right	$VALK_ROOT/lib/src/type/string.valk	/^    + fn pad_right(char: u8, length: uint) String {$/;"	f
 panic	$VALK_ROOT/lib/src/core/core.valk	/^+ fn panic(msg: String) $exit {$/;"	f
 params	$VALK_ROOT/lib/src/http/context-parser.valk	/^    + fn params() Map[String] {$/;"	f
 params	$VALK_ROOT/lib/src/http/route.valk	/^	+ fn params(path: String) Map[String] {$/;"	f
 params_grouped	$VALK_ROOT/lib/src/http/context-parser.valk	/^    + fn params_grouped() Map[Array[String]] {$/;"	f
 params_grp	$VALK_ROOT/lib/src/http/context-parser.valk	/^    -[ns+] params_grp: ?Map[Array[String]]$/;"	v
 params_map	$VALK_ROOT/lib/src/http/context-parser.valk	/^    -[ns+] params_map: ?Map[String]$/;"	v
+parent	$VALK_ROOT/lib/src/template/parser.valk	/^    parent: ?Parser (null)$/;"	v
+parent	$VALK_ROOT/lib/src/template/scope.valk	/^    parent: ?Scope (null)$/;"	v
+parray	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ global parray : [u32 x 18] ({$/;"	t
 parse	$VALK_ROOT/lib/src/json/parse.valk	/^    - static fn parse(data: utils:ByteBuffer) Value !invalid {$/;"	f
 parse	$VALK_ROOT/lib/src/url/parse.valk	/^+ fn parse(str: String) Url {$/;"	f
 parse_array	$VALK_ROOT/lib/src/json/parse.valk	/^    - fn parse_array() Value !invalid {$/;"	f
@@ -797,6 +847,8 @@ path	$VALK_ROOT/lib/src/fs/stream.valk	/^    ~ path: String$/;"	v
 path	$VALK_ROOT/lib/src/http/connection.valk	/^                        path: context.path$/;"	v
 path	$VALK_ROOT/lib/src/http/context.valk	/^    ~ path: utils:ByteBufferStrRef$/;"	v
 path	$VALK_ROOT/lib/src/http/server-request.valk	/^    + path: String$/;"	v
+path	$VALK_ROOT/lib/src/template/parser.valk	/^    path: ?String (null)$/;"	v
+path	$VALK_ROOT/lib/src/template/render.valk	/^        path: path$/;"	v
 path	$VALK_ROOT/lib/src/url/parse.valk	/^    + path: String$/;"	v
 payload	$VALK_ROOT/lib/src/http/client-request.valk	/^    - payload: utils:ByteBuffer$/;"	v
 poll_event	$VALK_ROOT/lib/src/coro/coro.valk	/^    poll_event: PollEvent (0)$/;"	v
@@ -817,6 +869,7 @@ pop_last	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn pop_last() T !empty {
 port	$VALK_ROOT/lib/src/http/server.valk	/^    ~ port: u16$/;"	v
 port	$VALK_ROOT/lib/src/net/socket-tcp.valk	/^    ~ port: u16$/;"	v
 pos	$VALK_ROOT/lib/src/type/string-char-step.valk	/^    pos: uint$/;"	v
+prepend	$VALK_ROOT/lib/src/json/value.valk	/^    + fn prepend(value: Value) {$/;"	f
 prepend	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn prepend(item: T, unique: bool (false)) SELF {$/;"	f
 prepend_copy	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn prepend_copy(item: T, unique: bool (false)) SELF {$/;"	f
 prepend_many	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn prepend_many(items: SELF) SELF {$/;"	f
@@ -852,26 +905,34 @@ pthread_mutex_unlock	$VALK_ROOT/lib/headers/pthread.valk.h	/^fn pthread_mutex_un
 pthread_t	$VALK_ROOT/lib/headers/pthread.valk.h	/^struct pthread_t {$/;"	t
 ptr	$VALK_ROOT/lib/src/type/ptr.valk	/^+ pointer ptr {$/;"	t
 purple	$VALK_ROOT/lib/src/type/string.valk	/^        + fn purple(bold: bool (false)) String {$/;"	f
-push	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn push(item: T, unique: bool (false)) SELF {$/;"	f
 query	$VALK_ROOT/lib/src/url/parse.valk	/^    + query: String$/;"	v
 query_data	$VALK_ROOT/lib/src/http/client-options.valk	/^    + query_data: ?Map[String]$/;"	v
 query_string	$VALK_ROOT/lib/src/http/connection.valk	/^                        query_string: context.query_string$/;"	v
 query_string	$VALK_ROOT/lib/src/http/context.valk	/^    ~ query_string: utils:ByteBufferStrRef$/;"	v
 query_string	$VALK_ROOT/lib/src/http/server-request.valk	/^    + query_string: String$/;"	v
+radix64DecTable	$VALK_ROOT/lib/src/crypto/radix64.valk	/^global radix64DecTable : [u8 x 128] ({$/;"	t
+radix64EncTable	$VALK_ROOT/lib/src/crypto/radix64.valk	/^global radix64EncTable : [u8 x 64] ({$/;"	t
+radix64_decode	$VALK_ROOT/lib/src/crypto/radix64.valk	/^fn radix64_decode(input: utils:ByteBuffer, output: utils:ByteBuffer) !invalid_input {$/;"	f
+radix64_encode	$VALK_ROOT/lib/src/crypto/radix64.valk	/^fn radix64_encode(input: utils:ByteBuffer, output: utils:ByteBuffer) {$/;"	f
 raise	$VALK_ROOT/lib/src/core/core.valk	/^+ fn raise(code: i32) $exit {$/;"	f
+random	$VALK_ROOT/lib/src/type/number.valk	/^    + static fn random() SELF {$/;"	f
 range	$VALK_ROOT/lib/src/type/array.valk	/^    + fn range(start: uint, end: uint, inclusive: bool (true)) SELF {$/;"	f
 range	$VALK_ROOT/lib/src/type/string.valk	/^    + fn range(start: uint, end: uint, inclusive: bool (true)) SELF {$/;"	f
 re_own_list	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    re_own_list: Bump (Bump.new())$/;"	v
 read	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn read(path: String) String !open !read !close {$/;"	f
-read	$VALK_ROOT/lib/src/fs/stream.valk	/^    + fn read(bytes: uint (10240)) String !read_err {$/;"	f
+read	$VALK_ROOT/lib/src/fs/stream.valk	/^    + fn read(bytes: uint (10240), output: utils:ByteBuffer) bool !read_err {$/;"	f
 read	$VALK_ROOT/lib/src/io/fd.valk	/^+ fn read(fd: FD, buffer: ptr, buffer_size: uint) uint !failed {$/;"	f
+read_big_endian	$VALK_ROOT/lib/src/type/number.valk	/^    + static fn read_big_endian(from: ptr[u8 x size_of(SELF)]) SELF {$/;"	f
 read_bytes	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn read_bytes(path: String, buffer: utils:ByteBuffer (utils:ByteBuffer.new(default_read_size))/;"	f
 read_hex_value	$VALK_ROOT/lib/src/type/ptr.valk	/^    fn read_hex_value(len: uint) uint !invalid {$/;"	f
+read_little_endian	$VALK_ROOT/lib/src/type/number.valk	/^    + static fn read_little_endian(from: ptr[u8 x size_of(SELF)]) SELF {$/;"	f
 read_more	$VALK_ROOT/lib/src/http/connection.valk	/^    fn read_more(buffer: utils:ByteBuffer) uint !err {$/;"	f
 read_octal_value	$VALK_ROOT/lib/src/type/ptr.valk	/^    fn read_octal_value(len: uint) uint !invalid {$/;"	f
-read_str	$VALK_ROOT/lib/src/template/render.valk	/^fn read_str(content: String, index: uint) String !invalid {$/;"	f
+read_str	$VALK_ROOT/lib/src/template/parser.valk	/^    fn read_str() String !missing_end {$/;"	f
 read_string	$VALK_ROOT/lib/src/json/parse.valk	/^    - fn read_string() String !invalid {$/;"	f
 read_uint_value	$VALK_ROOT/lib/src/type/ptr.valk	/^    fn read_uint_value(len: uint) uint !invalid {$/;"	f
+read_value	$VALK_ROOT/lib/src/template/parser.valk	/^    fn read_value(prio: int (999)) json:Value !invalid {$/;"	f
+read_var_name	$VALK_ROOT/lib/src/template/parser.valk	/^    fn read_var_name() String !invalid {$/;"	f
 reading	$VALK_ROOT/lib/src/fs/stream.valk	/^    ~ reading: bool (true)$/;"	v
 realpath	$VALK_ROOT/lib/src/fs/path.valk	/^+ fn realpath(path: String) String {$/;"	f
 recv	$VALK_ROOT/lib/src/net/connection.valk	/^    + fn recv(buffer: utils:ByteBuffer, bytes: uint) uint !connection !closed {$/;"	f
@@ -881,6 +942,7 @@ red	$VALK_ROOT/lib/src/type/string.valk	/^        + fn red(bold: bool (false)) S
 redirect	$VALK_ROOT/lib/src/http/server-response.valk	/^    + static fn redirect(location: String, code: u32 (301), headers: ?Map[String] (null)) Respon/;"	f
 reduce_size	$VALK_ROOT/lib/src/gc/bump.valk	/^    fn reduce_size() {$/;"	f
 reduce_size	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn reduce_size(size: uint) {$/;"	f
+ref	$VALK_ROOT/lib/src/type/ref.valk	/^+ pointer ref {$/;"	t
 remove	$VALK_ROOT/lib/src/json/value.valk	/^    + fn remove(key: String) {$/;"	f
 remove	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn remove(index: uint) SELF {$/;"	f
 remove	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + mut fn remove(key: K) SELF {$/;"	f
@@ -894,11 +956,11 @@ remove_leak_mark	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn remove_leak_mark() 
 remove_mark	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn remove_mark() { this.block_offset = this.block_offset & offmask }$/;"	f
 remove_on_stack	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn remove_on_stack() { this.flags = this.flags & (255 - flag_on_stack) }$/;"	f
 remove_shared	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn remove_shared() { this.flags = this.flags & (255 - flag_shared) }$/;"	f
-remove_still_co_owned	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn remove_still_co_owned() { this.flags = this.flags & (255 - flag_still_co_owned) }$/;"	f
 remove_value	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn remove_value(value: T) SELF {$/;"	f
 remove_value_copy	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn remove_value_copy(value: T) SELF {$/;"	f
-render	$VALK_ROOT/lib/src/template/render.valk	/^+ fn render(path: String, data: $T, template_directory: ?String (null)) String !FileNotFound {$/;"	f
-render_content	$VALK_ROOT/lib/src/template/render.valk	/^+ fn render_content(content: String, data: ?json:Value (null), template_directory: ?String (null/;"	f
+render	$VALK_ROOT/lib/src/template/parser.valk	/^    fn render() String {$/;"	f
+render	$VALK_ROOT/lib/src/template/render.valk	/^+ fn render(content: String, data: $T, options: ?RenderOptions (null)) String {$/;"	f
+render_path	$VALK_ROOT/lib/src/template/render.valk	/^+ fn render_path(path: String, data: $T, options: ?RenderOptions (null)) String !FileNotFound {$/;"	f
 replace	$VALK_ROOT/lib/src/type/string.valk	/^    + fn replace(part: String, with: String) String {$/;"	f
 request	$VALK_ROOT/lib/src/http/client-short.valk	/^+ fn request(method: String, url: String, options: ?Options (null)) ClientResponse$/;"	f
 request_sent	$VALK_ROOT/lib/src/http/client-request.valk	/^    ~ request_sent: bool (false)$/;"	v
@@ -918,6 +980,7 @@ responded	$VALK_ROOT/lib/src/http/response-writer.valk	/^    ~[ns+] responded: b
 response	$VALK_ROOT/lib/src/http/client-request.valk	/^    + fn response() ClientResponse !in_progress !invalid_response {$/;"	f
 response_received	$VALK_ROOT/lib/src/http/client-request.valk	/^    ~ response_received: bool (false)$/;"	v
 restore_gc_stack	$VALK_ROOT/lib/src/gc/stack.valk	/^fn restore_gc_stack() {$/;"	f
+result	$VALK_ROOT/lib/src/template/parser.valk	/^    result: utils:ByteBuffer (.new())$/;"	v
 resume	$VALK_ROOT/lib/src/coro/coro.valk	/^    fn resume() {$/;"	f
 reverse	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn reverse() SELF {$/;"	f
 reverse_copy	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn reverse_copy() SELF {$/;"	f
@@ -927,15 +990,29 @@ round_up	$VALK_ROOT/lib/src/type/number.valk	/^    + fn round_up(modulo: SELF) S
 route	$VALK_ROOT/lib/src/http/router.valk	/^	route: ?Route[T]$/;"	v
 rtrim	$VALK_ROOT/lib/src/type/string.valk	/^    + fn rtrim(part: SELF, limit: uint (0)) SELF {$/;"	f
 running_shared	$VALK_ROOT/lib/src/gc/gc-shared.valk	/^shared running_shared: bool (@undefined)$/;"	t
+s1	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^    s1 : [u32 x 256] ({0...})$/;"	v
+s2	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^    s2 : [u32 x 256] ({0...})$/;"	v
+s3	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^    s3 : [u32 x 256] ({0...})$/;"	v
+s4	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^    s4 : [u32 x 256] ({0...})$/;"	v
 s_back_buf	$VALK_ROOT/lib/src/coro/coro.valk	/^    s_back_buf: ptr (0.@cast(ptr))$/;"	v
 s_bottom	$VALK_ROOT/lib/src/coro/coro.valk	/^    s_bottom: ptr (0.@cast(ptr))$/;"	v
 s_cont	$VALK_ROOT/lib/src/coro/coro.valk	/^    s_cont: ptr (0.@cast(ptr))$/;"	v
 s_size	$VALK_ROOT/lib/src/coro/coro.valk	/^    s_size: uint (0)$/;"	v
 s_stack	$VALK_ROOT/lib/src/coro/coro.valk	/^    s_stack: ?ptr$/;"	v
 s_top	$VALK_ROOT/lib/src/coro/coro.valk	/^    s_top: ptr (0.@cast(ptr))$/;"	v
+sanitize	$VALK_ROOT/lib/src/html/sanitize.valk	/^+ fn sanitize(code: String) String {$/;"	f
+sanitize	$VALK_ROOT/lib/src/template/options.valk	/^    + sanitize: ?fn(String)(String) (null)$/;"	v
+sanitize_with_options	$VALK_ROOT/lib/src/html/sanitize.valk	/^+ fn sanitize_with_options(code: String, options: ?SanitizeOptions (null)) String {$/;"	f
 save	$VALK_ROOT/lib/src/fs/in-memory.valk	/^    + fn save(path: String) {$/;"	f
 save_to_file	$VALK_ROOT/lib/src/http/context.valk	/^    - save_to_file: ?fs:FileStream (null)$/;"	v
+sbox1	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ global sbox1 : [u32 x 256] ({$/;"	t
+sbox2	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ global sbox2 : [u32 x 256] ({$/;"	t
+sbox3	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ global sbox3 : [u32 x 256] ({$/;"	t
+sbox4	$VALK_ROOT/lib/src/crypto/blowfish.valk	/^+ global sbox4 : [u32 x 256] ({$/;"	t
 scheme	$VALK_ROOT/lib/src/url/parse.valk	/^    + scheme: String \/\/ http, https, file, ...$/;"	v
+scope	$VALK_ROOT/lib/src/template/parser.valk	/^    scope: ?Scope (null)$/;"	v
+scope_type_each	$VALK_ROOT/lib/src/template/scope.valk	/^value scope_type_each (1)$/;"	e
+scope_type_if	$VALK_ROOT/lib/src/template/scope.valk	/^value scope_type_if (2)$/;"	e
 send	$VALK_ROOT/lib/src/net/connection.valk	/^    + fn send(data: String) !connection {$/;"	f
 send_buffer	$VALK_ROOT/lib/src/net/connection.valk	/^    + fn send_buffer(data: utils:ByteBuffer, skip_bytes: uint, send_all: bool) uint !connection /;"	f
 send_bytes	$VALK_ROOT/lib/src/http/response-writer.valk	/^    - fn send_bytes(connection: net:Connection) !write {$/;"	f
@@ -953,6 +1030,7 @@ set	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn set(index: uint, value: T)
 set	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + mut fn set(key: K, value: T) SELF $offset_assign {$/;"	f
 set	$VALK_ROOT/lib/src/type/hashmap.valk	/^    + mut fn set(key: K, value: T) SELF $offset_assign {$/;"	f
 set	$VALK_ROOT/lib/src/type/string-char-step.valk	/^    fn set(str: String) {$/;"	f
+set	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn set(index: uint, v: u8) $offset_assign {$/;"	f
 set_array	$VALK_ROOT/lib/src/json/value.valk	/^    + fn set_array(key: String, values: Array[Value]) SELF {$/;"	f
 set_block	$VALK_ROOT/lib/src/gc/pool.valk	/^    fn set_block(block: ?ptr) {$/;"	f
 set_bool	$VALK_ROOT/lib/src/json/value.valk	/^    + fn set_bool(key: String, value: type:bool) SELF {$/;"	f
@@ -964,6 +1042,7 @@ set_headers	$VALK_ROOT/lib/src/http/client-options.valk	/^    + fn set_headers(h
 set_in_blanks	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_in_blanks() { this.flags = this.flags | flag_in_blanks }$/;"	f
 set_in_updates	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_in_updates() { this.flags = this.flags | flag_in_updates }$/;"	f
 set_leak_mark	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_leak_mark() { this.block_offset = this.block_offset | mark_leak }$/;"	f
+set_list_index	$VALK_ROOT/lib/src/template/scope.valk	/^    fn set_list_index(index: uint) !range {$/;"	f
 set_many	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + mut fn set_many(map: SELF) SELF {$/;"	f
 set_mark	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_mark() { this.block_offset = (this.block_offset & offmask) | mark }$/;"	f
 set_new	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_new() { this.flags = this.flags & (255 - flag_owned - flag_no_owner) }$/;"	f
@@ -978,7 +1057,6 @@ set_object	$VALK_ROOT/lib/src/json/value.valk	/^    + fn set_object(key: String,
 set_on_stack	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_on_stack() { this.flags = this.flags | flag_on_stack }$/;"	f
 set_owned	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_owned() { this.flags = (this.flags & (255 - flag_no_owner)) | flag_owned }$/;"	f
 set_shared	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_shared() { this.flags = this.flags | flag_shared }$/;"	f
-set_still_co_owned	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    fn set_still_co_owned() { this.flags = this.flags | flag_still_co_owned }$/;"	f
 set_string	$VALK_ROOT/lib/src/json/value.valk	/^    + fn set_string(key: String, value: String) SELF {$/;"	f
 set_unique	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + mut fn set_unique(key: K, value: T) !not_unique {$/;"	f
 set_unique	$VALK_ROOT/lib/src/type/hashmap.valk	/^    + mut fn set_unique(key: K, value: T) SELF {$/;"	f
@@ -1017,6 +1095,7 @@ sort	$VALK_ROOT/lib/src/type/array.valk	/^    + mut fn sort(func: ?fn(T, T)(bool
 sort_copy	$VALK_ROOT/lib/src/type/array.valk	/^    + fn sort_copy(func: ?fn(T, T)(bool) (null)) SELF {$/;"	f
 sort_keys	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + fn sort_keys() SELF {$/;"	f
 sort_keys	$VALK_ROOT/lib/src/type/hashmap.valk	/^    + fn sort_keys() SELF {$/;"	f
+spaces	$VALK_ROOT/lib/src/template/parser.valk	/^    spaces: uint (0)$/;"	v
 split	$VALK_ROOT/lib/src/type/string.valk	/^    + fn split(on: String) Array[String] {$/;"	f
 split_on_first_occurance_of_byte	$VALK_ROOT/lib/src/type/string.valk	/^    fn split_on_first_occurance_of_byte(byte: u8) (String, String) !not_found {$/;"	f
 ssl	$VALK_ROOT/lib/src/net/connection.valk	/^    ~ ssl: ?SSL (null)$/;"	v
@@ -1039,8 +1118,14 @@ stage	$VALK_ROOT/lib/src/http/client-request.valk	/^    - stage: uint (0)$/;"	v
 stage	$VALK_ROOT/lib/src/http/context.valk	/^    - stage: uint (0)$/;"	v
 start	$VALK_ROOT/lib/src/coro/coro.valk	/^    fn start() {$/;"	f
 start	$VALK_ROOT/lib/src/http/server.valk	/^    + fn start(worker_count: i32 (8)) void {$/;"	f
-start	$VALK_ROOT/lib/src/thread/thread.valk	/^+ fn start(func: imut fn()()) Thread {$/;"	f
+start	$VALK_ROOT/lib/src/template/parser.valk	/^            start: this.i$/;"	v
+start	$VALK_ROOT/lib/src/template/scope.valk	/^    start: int$/;"	v
+start	$VALK_ROOT/lib/src/thread/thread.valk	/^+ fn start(func: fn()()) Thread {$/;"	f
+start_col	$VALK_ROOT/lib/src/template/parser.valk	/^            start_col: this.col$/;"	v
+start_col	$VALK_ROOT/lib/src/template/scope.valk	/^    start_col: int$/;"	v
 start_func	$VALK_ROOT/lib/src/coro/coro.valk	/^    start_func: fnRef(Coro)()$/;"	v
+start_line	$VALK_ROOT/lib/src/template/parser.valk	/^            start_line: this.line$/;"	v
+start_line	$VALK_ROOT/lib/src/template/scope.valk	/^    start_line: int$/;"	v
 start_unsafe	$VALK_ROOT/lib/src/thread/thread.valk	/^    + static fn start_unsafe(func: fn()()) SELF {$/;"	f
 started	$VALK_ROOT/lib/src/coro/coro.valk	/^    started: bool (false)$/;"	v
 starts_with	$VALK_ROOT/lib/src/type/string.valk	/^    + fn starts_with(part: SELF) bool {$/;"	f
@@ -1080,7 +1165,9 @@ sys	$VALK_ROOT/lib/src/net/socket.valk	/^        sys:shutdown(fd.to(i32), sys:O_
 sys	$VALK_ROOT/lib/src/thread/sleep.valk	/^    sys:nanosleep(ts, ts)$/;"	v
 sys	$VALK_ROOT/lib/src/thread/thread.valk	/^            sys:pthread_join((thr.@cast(sys:pthread_t)).data, null)$/;"	v
 sys	$VALK_ROOT/lib/src/time/time.valk	/^  sys:GetSystemTimeAsFileTime(ft);$/;"	v
+sys	$VALK_ROOT/lib/src/type/number.valk	/^        sys:srand(time:microtime().to(u32))$/;"	v
 tail	$VALK_ROOT/lib/src/gc/ptr-ring.valk	/^    tail: uint (0)$/;"	v
+template_directory	$VALK_ROOT/lib/src/template/options.valk	/^    + template_directory: ?String (null)$/;"	v
 test	$VALK_ROOT/lib/src/coro/coro.valk	/^    test: uint (10)$/;"	v
 text	$VALK_ROOT/lib/src/http/server-response.valk	/^    + static fn text(body: String, code: u32 (200), content_type: String ("text\/plain"), header/;"	f
 thread	$VALK_ROOT/lib/src/coro/coro.valk	/^                thread:sleep_ms(timeout)$/;"	v
@@ -1091,23 +1178,27 @@ thread_stop	$VALK_ROOT/lib/src/gc/gc-thread.valk	/^fn thread_stop() {$/;"	f
 throw	$VALK_ROOT/lib/src/coro/functions.valk	/^fn throw(code: u32, msg: String) {$/;"	f
 to_ascii_string	$VALK_ROOT/lib/src/type/u8.valk	/^    + fn to_ascii_string() String {$/;"	f
 to_base	$VALK_ROOT/lib/src/type/number.valk	/^    + fn to_base(base: SELF) String {$/;"	f
-to_base_to_ptr	$VALK_ROOT/lib/src/type/number.valk	/^    fn to_base_to_ptr(base: SELF, result: ptr) uint {$/;"	f
+to_base_to_ptr	$VALK_ROOT/lib/src/type/number.valk	/^    fn to_base_to_ptr(base: SELF, result: ptr, lowercase: bool (false)) uint {$/;"	f
 to_float	$VALK_ROOT/lib/src/type/string.valk	/^    + fn to_float() f64 !invalid {$/;"	f
 to_hex	$VALK_ROOT/lib/src/type/number.valk	/^    + fn to_hex() String {$/;"	f
 to_hex	$VALK_ROOT/lib/src/type/ptr.valk	/^    + fn to_hex() String $to {$/;"	f
 to_int	$VALK_ROOT/lib/src/type/string.valk	/^    + fn to_int() int !invalid {$/;"	f
 to_json_value	$VALK_ROOT/lib/src/json/extend.valk	/^    + fn to_json_value() Value $to {$/;"	f
-to_ptr	$VALK_ROOT/lib/src/gc/gc-ptr.valk	/^    fn to_ptr() ptr $to {$/;"	f
+to_ptr	$VALK_ROOT/lib/src/gc/gc-ptr.valk	/^    + fn to_ptr() ptr $to {$/;"	f
 to_str	$VALK_ROOT/lib/src/type/bool.valk	/^    fn to_str() String $to {$/;"	f
 to_str	$VALK_ROOT/lib/src/type/float-number.valk	/^    + fn to_str(decimals: uint (2)) String {$/;"	f
 to_str	$VALK_ROOT/lib/src/type/number.valk	/^    + fn to_str() String $to {$/;"	f
 to_str	$VALK_ROOT/lib/src/utils/ByteBufferStrRef.valk	/^    + fn to_str() String $to {$/;"	f
+to_string	$VALK_ROOT/lib/src/json/value.valk	/^    + fn to_string() String $to {$/;"	f
 to_string	$VALK_ROOT/lib/src/type/c-string.valk	/^    fn to_string() String $to {$/;"	f
 to_string	$VALK_ROOT/lib/src/type/float-number.valk	/^    fn to_string() String $to {$/;"	f
 to_string	$VALK_ROOT/lib/src/utils/ByteBuffer.valk	/^    + fn to_string() String $to {$/;"	f
 to_type	$VALK_ROOT/lib/src/json/decode-gen.valk	/^+ fn to_type[T](data: Value) T {$/;"	f
 to_uint	$VALK_ROOT/lib/src/type/string.valk	/^    + fn to_uint() uint !invalid {$/;"	f
-tok	$VALK_ROOT/lib/src/template/render.valk	/^fn tok(content: String, buf: utils:ByteBuffer, index: uint, allow_space: bool, c_ptr: ptr) {$/;"	f
+tok	$VALK_ROOT/lib/src/template/parser.valk	/^    fn tok(allow_space: bool, update: bool (true)) {$/;"	f
+token	$VALK_ROOT/lib/src/template/parser.valk	/^    token: utils:ByteBuffer (.new())$/;"	v
+token_is	$VALK_ROOT/lib/src/template/parser.valk	/^    fn token_is(tok: String) bool {$/;"	f
+total_size	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    total_size: [u64 x 2] ({0, 0})$/;"	v
 trigger_list	$VALK_ROOT/lib/src/gc/gc-local.valk	/^global trigger_list: [uint x 5]$/;"	t
 trigger_reached	$VALK_ROOT/lib/src/gc/api.valk	/^value trigger_reached (mem_new >= mem_trigger)$/;"	e
 trim	$VALK_ROOT/lib/src/type/string.valk	/^    + fn trim(part: SELF, limit: uint (0)) SELF {$/;"	f
@@ -1115,6 +1206,8 @@ try_ca_path	$VALK_ROOT/lib/src/net/ssl.valk	/^    static fn try_ca_path(ctx: oss
 type	$VALK_ROOT/lib/src/json/create.valk	/^        type: type_string$/;"	v
 type	$VALK_ROOT/lib/src/json/parse.valk	/^            type: type_object$/;"	v
 type	$VALK_ROOT/lib/src/json/value.valk	/^    + type: type:int$/;"	v
+type	$VALK_ROOT/lib/src/template/parser.valk	/^            type: type$/;"	v
+type	$VALK_ROOT/lib/src/template/scope.valk	/^    type: int$/;"	v
 type_array	$VALK_ROOT/lib/src/json/parse.valk	/^value type_array (5)$/;"	e
 type_bool	$VALK_ROOT/lib/src/json/parse.valk	/^value type_bool (3)$/;"	e
 type_none	$VALK_ROOT/lib/src/json/parse.valk	/^value type_none (0)$/;"	e
@@ -1131,6 +1224,7 @@ unlock	$VALK_ROOT/lib/src/core/mutex.valk	/^	+ fn unlock(value: T) void {$/;"	f
 unlock	$VALK_ROOT/lib/src/gc/api.valk	/^+ fn unlock() { gc.mutex.unlock() }$/;"	f
 unlock	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn unlock() { this.mutex.unlock() }$/;"	f
 unused_blocks	$VALK_ROOT/lib/src/gc/blocks.valk	/^@shared unused_blocks: [ptr x 128]$/;"	t
+update	$VALK_ROOT/lib/src/crypto/blake2b.valk	/^    + fn update(data: ptr[u8], length: uint) {$/;"	f
 update_mark	$VALK_ROOT/lib/src/gc/marking.valk	/^fn update_mark(item: GcItem) {$/;"	f
 update_marks	$VALK_ROOT/lib/src/gc/gc-local.valk	/^    fn update_marks() {$/;"	f
 update_shared_trigger	$VALK_ROOT/lib/src/gc/gc-shared.valk	/^fn update_shared_trigger() {$/;"	f
@@ -1143,9 +1237,11 @@ valk_run_all_tests	$VALK_ROOT/lib/templates/main.valk	/^fn valk_run_all_tests() 
 value	$VALK_ROOT/lib/src/core/mutex-struct.valk	/^	- value: T$/;"	v
 value	$VALK_ROOT/lib/src/core/mutex.valk	/^	- value: T$/;"	v
 value	$VALK_ROOT/lib/src/json/value-gen.valk	/^+ fn value(data: $T) Value {$/;"	f
+value_is_true	$VALK_ROOT/lib/src/template/parser.valk	/^    fn value_is_true(val: json:Value) bool {$/;"	f
 values	$VALK_ROOT/lib/src/type/flatmap.valk	/^    + fn values() Array[T] {$/;"	f
 values	$VALK_ROOT/lib/src/type/hashmap.valk	/^    + fn values() Array[T] {$/;"	f
 verify	$VALK_ROOT/lib/src/gc/api.valk	/^+ shared verify : bool (@undefined)$/;"	t
+vname	$VALK_ROOT/lib/src/template/scope.valk	/^    vname: String ("")$/;"	v
 vtable	$VALK_ROOT/lib/src/gc/gc-data.valk	/^    vtable: ptr$/;"	v
 wait	$VALK_ROOT/lib/src/coro/poll.valk	/^    fn wait(timeout: i32 (-1), result: Array[Coro] (null)) Array[Coro] !fd_limit !unknown {$/;"	f
 wait	$VALK_ROOT/lib/src/thread/thread.valk	/^    + fn wait() {$/;"	f
@@ -1154,9 +1250,11 @@ worker	$VALK_ROOT/lib/src/http/connection.valk	/^    ~ worker: Worker$/;"	v
 worker	$VALK_ROOT/lib/src/http/worker.valk	/^fn worker(server: Server) {$/;"	f
 write	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn write(path: String, content: String, append: bool (false)) !open !write {$/;"	f
 write	$VALK_ROOT/lib/src/io/fd.valk	/^+ fn write(fd: FD, str: String) !failed !again {$/;"	f
+write_big_endian	$VALK_ROOT/lib/src/type/number.valk	/^    + static fn write_big_endian(v: SELF, to: ptr[u8 x size_of(SELF)]) {$/;"	f
 write_bytes	$VALK_ROOT/lib/src/fs/file.valk	/^+ fn write_bytes(path: String, data: ptr, size: uint, append: bool (false)) !open !write {$/;"	f
 write_bytes	$VALK_ROOT/lib/src/fs/stream.valk	/^    + fn write_bytes(from: ptr, len: uint) !write_err {$/;"	f
 write_bytes	$VALK_ROOT/lib/src/io/fd.valk	/^+ fn write_bytes(fd: FD, data: ptr, length: uint) uint !failed !again {$/;"	f
+write_little_endian	$VALK_ROOT/lib/src/type/number.valk	/^    + static fn write_little_endian(v: SELF, to: ptr[u8 x size_of(SELF)]) {$/;"	f
 yellow	$VALK_ROOT/lib/src/type/string.valk	/^        + fn yellow(bold: bool (false)) String {$/;"	f
 yield	$VALK_ROOT/lib/src/coro/functions.valk	/^+ fn yield() {$/;"	f
 zone	$VALK_ROOT/lib/src/type/hashmap.valk	/^    fn zone(key: K) FlatMap[K, T] {$/;"	f
