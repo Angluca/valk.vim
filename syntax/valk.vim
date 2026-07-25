@@ -2,27 +2,30 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword valkKeyword static dynamic public global
-syn keyword valkKeyword fn let const
+syn keyword valkKeyword static dynamic macro
+syn keyword valkKeyword fn let mut const
 syn keyword valkKeyword co
-syn match   valkKeyword '\v^\s*<(link|header|use|alias|value|pointer)>'
+syn keyword valkKeyword link header use alias global shared
+syn keyword valkKeyword pointer mode trait extend
 
 syn keyword valkType bool char byte void string cstring
 syn keyword valkType int uint isize usize
 syn keyword valkType i8 i16 i32 i64 u8 u16 u32 u64
 syn keyword valkType float f32 f64
 
-syn keyword valkSelf self this ptr
+syn keyword valkSelf self this ptr default
 syn keyword valkConstant true false null
-syn keyword valkSMacro assert println print
+syn keyword valkSMacro assert println print atomic
 syn match   valkNew  '\v<(new|[m]?alloc|create)>'
 syn match   valkFree '\v<(free)>'
 
-syn keyword valkRepeat while each as for
-syn keyword valkStatement break continue return defer await
-syn keyword valkConditional if else elif switch case
+syn keyword valkRepeat while each for
+syn keyword valkStatement break continue return defer await as
+syn keyword valkConditional if else elif match case
+syn keyword valkLabel default
 
-syn keyword valkException throw try catch cast
+syn keyword valkKeyword throw cothrow cast
+syn keyword valkException try catch fail nope
 syn keyword valkPanic panic
 
 syn match valkTitle      '[@!?$]'
@@ -31,25 +34,24 @@ syn match valkOperator   '[\+\-\%=\/\^\&\*><\|~]'
 syn match valkOperator   '\v(\&\&|\|\||\!\=)'
 syn match valkConstant   '[{}\[\]()]'
 
-syn match valkType       '\v[?]@<=\s*<(\w+)>' " ?type
 syn match valkType       '\v\(@<=\s*\w+\ze(\[.*\])*\s*\*+\s*\)' " (type*)
 syn match valkType       '\v\[@<=\s*\w+\ze(\[.*\])*\s*\*+\s*\]' " [type*]
 syn match valkType       '\v<\w+_[tscemui]>'
 syn match valkMacro      '\v<[_]*\u[A-Z0-9_]*>'
 syn match valkType       '\v<[_]*\u[A-Z0-9_]*[a-z]+\w*>'
-syn match valkType       '\v\.?\zs<([iu][0-9]{1,3})?>'
+"syn match valkType       '\v\.?\zs<([iu][0-9]{1,3})?>'
 syn match valkRepeat     '\v([^\.](\.|\.{3}|:|-\>))@<=\w\w*'
 "syn match valkType       '\v<\w+>\ze(\<(\w+\s*(\<.*\>|\[.*\])?\s*[,]?\s*)*\>)' "foo<T>()
 syn match valkType       '\v<\w+>\ze(:\w)'
 syn match valkFunc       '\v[_]*\l\w*\ze((\[.*\])|((::)?\<.*\>))*\s*\('
 
+"syn match valkException  '\v(\W@<=[&*~]+\ze[\(\[\{\<]*[-]?\w)|(\w@<=[*]+\ze(\W|\s))'
 syn match valkException  '\v(\s@<=[&*~]+\ze[\(\[\{\<]*[-]?\w)|(\w@<=[*]+\ze(\W|\s))'
-syn match valkStruct     '\v((typedef|struct|class|object|enum|union|namespace)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
+"syn match valkStruct     '\v((type|typedef|struct|class|object|enum|union|mode|trait|pointer)(\[.*\])?\s*)@<=[_]*\w+\ze(\[.*\])?\s*(\(|\{)'
 
 syn match valkAdded      '\v^\s*<(test)\ze\s.*\{'
-syn match valkLabel      '\v<\@(\w+)*>'
-"syn match valkType       '\v<(ansi|core|coro|fs|gc|html|http|io|json|mem|net|template|thread|time|type|url|utils)\ze\s*:'
-
+syn match valkLabel      '\v<[@$](\w+)>'
+syn match valkKeyword    '\v^(\s*[+-~]\s*)?<(value)>'
 
 " -- shader
 "syn match valkKeyword    '\v<(uniform|instance|varying|var|vertex|fragment|in|out)>\s'
@@ -94,11 +96,12 @@ syn match  valkCharacter        "'[^\\]'"
 syn region    valkString      matchgroup=valkString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell
 "syn region    valkString      matchgroup=valkString start=+`+ skip=+\\\\\|\\`+ end=+`+ contains=@Spell
 
+syn match valkNumber "\v<[0-9_]+>"
 syn match valkNumber "\v<0[xX][0-9a-fA-F_]+([iuIU]?[lL]?[0-9]{-,3})?>"
 syn match valkNumber "\v<0[bB][01_]+([iuIU]?[lL]?[0-9]{-,3})?>"
 
 syn match valkFloat  '\v<\.\d+([eE][+-]?\d+)?[fFdD]?>' display
-syn match valkFloat  '\v<([0][1-9]*)([eE][+-]?\d+)?[fFdD]?>' display
+"syn match valkFloat  '\v<([0][1-9]*)([eE][+-]?\d+)?[fFdD]?>' display
 syn match valkFloat  '\v<0x\x+(\.\x+)?[pP][+-]?\d+[fFdD]?>' display
 
 " Integer literals
@@ -149,11 +152,12 @@ hi def link valkSpecialChar           SpecialChar
 hi def link valkException             Exception
 hi def link valkPanic                 Exception
 
-syn match   valkTypedef  contains=valkTypedef "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-syn match   valkFunc     "\%(r#\)\=\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-syn keyword valkKeyword union enum typedef namespace object class struct nextgroup=valkTypedef skipwhite skipempty
+syn match   valkTypedef "\h\w*" display contained
+syn match   valkFunc "\h\w*" display contained
+"syn keyword valkKeyword union enum type typedef namespace object class struct mode trait nextgroup=valkTypedef skipwhite skipempty
+syn keyword valkKeyword union enum type typedef namespace object class struct mode trait pointer nextgroup=valkTypedef skipwhite
 syn keyword valkKeyword union nextgroup=valkType skipwhite skipempty contained
-"syn keyword valkMacro platform macro nextgroup=valkTypedef skipwhite skipempty
+"syn keyword valkMacro macro nextgroup=valkTypedef skipwhite skipempty
 " adapted from neovim runtime/syntax
 syn keyword valkTodo contained TODO FIXME XXX NOTE
 syn region  valkComment  start="/\*" end="\*/" contains=valkTodo,@Spell
